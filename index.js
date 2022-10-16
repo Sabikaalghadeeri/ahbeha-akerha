@@ -6,22 +6,22 @@ const ejsLayouts = require('express-ejs-layouts')
 // MIDDLEWARE
 app.set('view engine','ejs')
 app.use(ejsLayouts)
+// controllers middleware 
+app.use('/aheba', require('./controllers/aheba'))
+app.use('/akerha', require('./controllers/akerha'))
 
-// ROUTES
-app.get('/', (req, res) => {
-    res.render('home.ejs')
-})
-app.get('/', (req, res) => {
-    res.render('foods.ejs')
-})
-// favorite animals
-app.get('/animals', (req, res)=>{
-    res.render('animals.ejs', {animals: ['sand crab', 'corny joke dog', 'benedict the sea cucumber']})
-})
-// favorite foods
-app.get('/foods', (req, res)=>{
-    res.render('foods.ejs', {foods: ['Pizza', 'chocolate', 'ice-cream']})
-})
+// ROUTES -- after adding the controllers I have to remove the routes from here
+// app.get('/foods', (req, res)=>{
+//     res.render('foods.ejs', {foods: ['Pizza', 'chocolate', 'ice-cream']})
+// })
+
+// app.get('/movies', (req, res)=>{
+//     res.render('movies.ejs', {movies: ['Me Time', 'Red Notice', 'Harry Potter']})
+// })
+
+// app.get('/products', (req, res)=>{
+//     res.render('product.ejs', {products: ['nail polish', 'relaxing maskes', 'candles']})
+// })
 
 app.listen (PORT, ()=>{
     console.log(`You're running the aheba-akerha app!`)
